@@ -8,5 +8,15 @@ npm install -S afeiship/next-defaults --registry=https://registry.npm.taobao.org
 
 ## usage:
 ```js
-//DOCS here!
+import 'next-defaults';
+
+// old:
+function abc(vaule){
+  return typeof vaule !== 'undefined' ? vaule : -1
+}
+
+// now:
+function abc(vaule){
+  return nx.defaults(value,-1);
+}
 ```
