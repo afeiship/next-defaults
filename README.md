@@ -1,12 +1,12 @@
 # next-defaults
 > Set defaults value
 
-## install:
+## installation
 ```bash
 npm install -S afeiship/next-defaults --registry=https://registry.npm.taobao.org
 ```
 
-## usage:
+## usage
 ```js
 import 'next-defaults';
 
