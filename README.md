@@ -16,8 +16,8 @@ npm install -S @jswork/next-defaults
 import '@jswork/next-defaults';
 
 nx.defaults(currentValue, defaultValue);
-nx.defaults(0, -1); //-1
-nx.defaults(undefeind, -1); //-1
+nx.defaults(0, -1);           // 0
+nx.defaults(undefeind, -1);   //-1
 ```
 
 ## license
