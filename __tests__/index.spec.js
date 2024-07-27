@@ -1,21 +1,34 @@
-(function () {
-  require('../src');
+require('../src');
 
-  describe('api.basic test', () => {
-    test('nx.defaults should set all kinds of value', function () {
-      function abc(vaule) {
-        return nx.defaults(vaule, -1);
-      }
-
-      expect(abc()).toBe(-1);
-      expect(abc(0)).toBe(0);
-      expect(abc(null)).toBe(null);
-      expect(abc('')).toBe('');
-      expect(abc(1)).toBe(1);
-      expect(abc(true)).toBe(true);
-      expect(abc(false)).toBe(false);
-      expect(abc(2)).toBe(2);
-      expect(abc(NaN)).toBe(NaN);
-    });
+describe('nx.defaults', () => {
+  test('1.null/undefined should return default value', function() {
+    expect(nx.defaults(null, 'default')).toBe('default');
+    expect(nx.defaults(undefined, 'default')).toBe('default');
   });
-})();
+
+  test('2.string/nubmer/boolean should return self', function() {
+    expect(nx.defaults('a', 'default')).toBe('a');
+    expect(nx.defaults('', 'default')).toBe('');
+    expect(nx.defaults(1, 'default')).toBe(1);
+    expect(nx.defaults(0, 'default')).toBe(0);
+    expect(nx.defaults(+0, 'default')).toBe(+0);
+    expect(nx.defaults(-0, 'default')).toBe(-0);
+    expect(nx.defaults(true, 'default')).toBe(true);
+    expect(nx.defaults(false, 'default')).toBe(false);
+  });
+
+  test('3. pure array', () => {
+    const a1 = [1, 2, 3];
+    const a2 = nx.defaults(a1, [4, 5, 6]);
+    expect(a1).toEqual([1, 2, 3]);
+    expect(a2).toEqual([1, 2, 3]);
+  });
+
+  test('4. object', () => {
+    const obj1 = { name: 124, age: null, city: null };
+    const res_obj1 = nx.defaults(obj1, { name: 'default', age: 20, city: 'beijing' });
+    const res_obj2 = nx.defaults(obj1, { name: 'default', age: 0, city: '' });
+    expect(res_obj1).toEqual({ name: 124, age: 20, city: 'beijing' });
+    expect(res_obj2).toEqual({ name: 124, age: 0, city: '' });
+  });
+});

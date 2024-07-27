@@ -15,9 +15,14 @@ npm install -S @jswork/next-defaults
 ```js
 import '@jswork/next-defaults';
 
+// primitive value
 nx.defaults(currentValue, defaultValue);
 nx.defaults(0, -1);           // 0
 nx.defaults(undefeind, -1);   //-1
+
+// object
+nx.defaults({ name: 'fei' }, { name: 'afei', age: 18 });
+// { name: 'fei', age: 18 }
 ```
 
 ## license
