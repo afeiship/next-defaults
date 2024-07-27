@@ -24,11 +24,15 @@ describe('nx.defaults', () => {
     expect(a2).toEqual([1, 2, 3]);
   });
 
-  test('4. object', () => {
+  test('4. object should only return the properties that are not exist', () => {
     const obj1 = { name: 124, age: null, city: null };
     const res_obj1 = nx.defaults(obj1, { name: 'default', age: 20, city: 'beijing' });
     const res_obj2 = nx.defaults(obj1, { name: 'default', age: 0, city: '' });
+    const res_obj3 = nx.defaults(obj1, { city: '' });
     expect(res_obj1).toEqual({ name: 124, age: 20, city: 'beijing' });
     expect(res_obj2).toEqual({ name: 124, age: 0, city: '' });
+
+    // only remain city property
+    expect(res_obj3).toEqual({ city: '' });
   });
 });

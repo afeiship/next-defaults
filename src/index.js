@@ -1,7 +1,7 @@
 import nx from '@jswork/next';
 
 const defaults = {
-  isEmpty: (value) => value == null
+  isEmpty: (value) => value == null,
 };
 
 nx.defaults = function(inSource, inDefaults, inOptions) {
